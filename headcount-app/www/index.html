@@ -44,12 +44,21 @@
         <div class="pages">
             <div class="panel" id="main" data-title="Main" data-selected="true">
                 <form name='form' id='form'>
-                    <p>Enter headcount here</p>
+                   <label>Starting Location</label>
+                   <!-- make dropdown -->
+                    <input id='headcount' name='headcount' type='text'/>
+                    <label>Boarded</label>
                     <input id='headcount' name='headcount' type='number' pattern='[0-9]*'/>
-                    <button type="submit" name='Enter' id='Enter'>Enter</button> 
+                    <label>Departed</label>
+                    <input id='headcount' name='headcount' type='number' pattern='[0-9]*'/>
+                    <label>Full</label>
+                    <!-- radio button -->
+                    <button type="submit" name='Enter' id='Enter'>Submit</button> 
                 </form>
             </div>
-            
+        
+
+
             <div class="panel" id="page2" data-title="Driver Log">
                 <form name='start_log' id='start_log'>
                     <p>Name</p>
@@ -63,7 +72,7 @@
             </div>
         </div>
 
-        <nav id="left">
+  <!--       <nav id="left">
             <div class="view active">
                 <header>
                     <h1>Left</h1>
@@ -78,8 +87,7 @@
                 </div>
             </div>
         </nav>
-
+ -->
     </div>
 </body>
-
 </html>
