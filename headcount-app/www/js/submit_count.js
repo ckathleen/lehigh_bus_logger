@@ -19,7 +19,9 @@ $(function() {
         $.ajax({
             type: 'POST',
             url: $(form).attr('action'),
-            data: data
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            dataType: "json"
             
         })
         .done(function(data){
