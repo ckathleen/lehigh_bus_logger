@@ -13,26 +13,27 @@ $(function() {
         var data = {'location': $('#location').val(),
                    'boarded': $('#boarded').val(),
                    'departed': $('#departed').val(),
-                   'full': $('#yes').val()
+                   'full': $('input[type="radio"]:checked').val()
                   };
-        console.log(JSON.stringify(data));
+        //console.log(JSON.stringify(data));
         $.ajax({
             type: 'POST',
             url: $(form).attr('action'),
             data: JSON.stringify(data),
             contentType: 'application/json',
-            dataType: "json"
-            
-        })
-        .done(function(data){
-                console.log(data);
+            dataType: "json", 
+            success: function(res){
+                console.log(JSON.stringify(res));
                 
                 //clear form
                 $('#location').val('');
                 $('#boarded').val('');
                 $('#departed').val('');
-                $('#yes').val('');
-                $('#no').val('');
+                $('input[name=bus_full]').prop('checked',false);
+                //$('#yes').val('');
+                //$('#no').val('');
+                }
+            
         })
         .fail(function(data){
             console.log('ajax request failed');
