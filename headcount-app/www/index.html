@@ -3,7 +3,6 @@
 <html>
 
 <head>
-
     <title>App Framework Kitchen Sink</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui">
@@ -38,7 +37,6 @@
     </div>
 --> 
     <div class="view">
-        
         <header>
             <a class="menuButton" data-left-menu="left" data-transition="cover" style="float:left"></a>
             <h1>Title</h1>
@@ -57,7 +55,7 @@
                     <label>Departed</label>
                     <input id='departed' name='departed' type='number' pattern='[0-9]*'/>
                     <p>
-                    <label>Full?</label>
+                    <label>Full Bus?</label>
                     <input type="radio" 
                            name="bus_full"
                            id="yes"
@@ -72,9 +70,6 @@
                     <button type="submit" name='submitButton' id='Enter'>Submit</button> 
                 </form>
             </div>
-        
-
-
             <div class="panel" id="page2" data-title="Driver Log">
                 <form name='start_log' id='start_log'>
                     <p>Name</p>
@@ -87,23 +82,6 @@
                 </form>
             </div>
         </div>
-
-  <!--       <nav id="left">
-            <div class="view active">
-                <header>
-                    <h1>Left</h1>
-                </header>
-                <div class="pages">
-                    <div class="panel active" id="navPage1" data-title="Foobar">
-                        <ul class="list">
-                            <li><a href="#main" onclick="$.afui.clearHistory()">Main Page</a></li>
-                            <li><a href="#page2" onclick="$.afui.clearHistory()">Driver log</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
- -->
     </div>
 </body>
 </html>

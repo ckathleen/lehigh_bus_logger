@@ -24,21 +24,17 @@ $(function() {
             dataType: "json", 
             success: function(res){
                 console.log(JSON.stringify(res));
-                
-                //clear form
+                alert(JSON.stringify(res));
                 $('#location').val('');
                 $('#boarded').val('');
                 $('#departed').val('');
                 $('input[name=bus_full]').prop('checked',false);
-                //$('#yes').val('');
-                //$('#no').val('');
-                }
-            
+            }
         })
         .fail(function(data){
             console.log('ajax request failed');
             $(formMessages).text('Ajax request failed');
         });
-})
+    });
 });
 
