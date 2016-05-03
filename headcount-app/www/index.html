@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>App Framework Kitchen Sink</title>
+    <title>Lehigh Bus Logger</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui">
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -20,6 +20,7 @@
     <script type="text/javascript" charset="utf-8" src="lib/appframework/appframework.ui.min.js"></script>
     <script type="text/javascript" src="js/submit_count.js"></script>
     <script type="text/javascript" src="js/submit_log.js"></script>
+    <script type="text/javascript" src="js/submit_end_of_day.js"></script>
         
     <script src='cordova.js'></script>
 
@@ -37,7 +38,7 @@
         <h1>Starting app</h1>
     </div>
 --> 
-    <div class="view">
+    <div class="view splitview">
         <header>
             <a class="menuButton" data-left-menu="left" data-transition="cover" style="float:left"></a>
             <h1>Title</h1>
@@ -73,7 +74,7 @@
                 </form>
             </div>
            
-            <div class="panel" id="main" data-title="Main" >
+            <div class="panel" id="main" data-title="Head Count" >
                 <div id='formMessages'></div>
                 <form name='form' id='form' action="http://localhost:3000/postHeadCount/">
                     <br>
@@ -104,7 +105,33 @@
                     <button type="submit" name='submitButton' id='Enter'>Submit</button> 
                 </form>
             </div>
+            <div class="panel" id="page2" data-title="End of Day" >
+                <form name='end_of_day' id='end_of_day' action="http://localhost:3000/postEndOfDay/">
+                    <br>
+                    <p>Ending Mileage</p>
+                   <!-- make dropdown -->   
+                    <input id='ending_mileage' name='ending_mileage' type='number' step='0.001'/>
+                    <button type="submit" name='submit_end' id='submit_end'>Submit</button> 
+                </form>
+            </div>
         </div>
+        <nav id="left">
+            <div class="view active">
+                <header>
+                    <h1>Menu</h1>
+                </header>
+                <div class="pages">
+                    <div class="panel active" id="navPage1" data-title="Foobar">
+                        <ul class="list">
+                            <li><a href="#page1" onclick="$.afui.clearHistory()">Driver Log</a></li>
+                            <li><a href="#main" onclick="$.afui.clearHistory()">Head Count</a></li>
+                            <li><a href="#page2" onclick="$.afui.clearHistory()">End of Day</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
     </div>
+    
 </body>
 </html>

@@ -5,7 +5,8 @@ var LogSchema = new mongoose.Schema({
     driver_name: String,
     date: {type: Date, default: Date.now },
     vehicle_nbr: Number,
-    starting_mileage: Number
+    starting_mileage: Number,
+	ending_mileage: Number
 })
 
 module.exports = mongoose.model('DriverLogs', LogSchema);

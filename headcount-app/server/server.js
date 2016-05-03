@@ -27,18 +27,27 @@ app.post('/postHeadCount', function(req, res){
     console.log('body: ' + JSON.stringify(req.body));
     req.checkBody('boarded', 'Boarded is not int').isInt()
 	req.checkBody('departed', 'Departed is not int').isInt()
-	var headcount = new Headcount({
-        location: req.body.location,
-        boarded: req.body.boarded,
-        departed: req.body.departed,
-        full: req.body.full,
-        vehicle_nbr: req.body.vehicle_nbr
-    });
-    
-    headcount.save(function(err) {
-        if(err) console.log(err);
-        res.send(headcount);
-    })
+	DriverLog.findById(req.body.trip_id, function(err, log) {
+		if (err) console.log(err);
+		if (log) {
+			var headcount = new Headcount({
+    		    location: req.body.location,
+    		    boarded: req.body.boarded,
+    		    departed: req.body.departed,
+    		    full: req.body.full,
+    		    vehicle_nbr: req.body.vehicle_nbr
+    		});
+    		
+    		headcount.save(function(err) {
+    		    if(err) console.log(err);
+    		    res.send(log);
+    		});
+		} else {
+			console.log('Trip id not found. Headcount not saved.');
+			res.send({_id: 0});
+		}
+	});
+
 });
 
 app.post('/postLog', function(req, res) {
@@ -54,9 +63,28 @@ app.post('/postLog', function(req, res) {
 	console.log('validation complete');
     log.save(function(err) {
         if(err) console.log(err);
-        res.send({'vehicle_nbr': req.body.vehicle_nbr});
+        res.send(log);
     });
 
+});
+
+app.post('/postEndOfDay', function(req, res) {
+	console.log('body: ' + JSON.stringify(req.body));
+	req.checkBody('ending_mileage', 'Ending mileage not a number').isInt();
+	DriverLog.findById(req.body.trip_id, function(err, log) {
+		if (err) console.log(err);
+		if (log) {
+			log.ending_mileage = req.body.ending_mileage;
+			log.save(function(err) {
+				if (err) console.log(err);
+				console.log(JSON.stringify(log));
+				res.send(log);
+			});
+		} else {
+			console.log("trip_id does not exist. Feedback not saved.");
+			res.send({'_id': 0});
+		}
+	});
 });
 
 app.listen(3000, function() {

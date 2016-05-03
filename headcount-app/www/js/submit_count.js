@@ -12,7 +12,8 @@ $(function() {
                    'boarded': $('#boarded').val(),
                    'departed': $('#departed').val(),
                    'full': $('input[name="bus_full"]:checked').val(),
-                   'vehicle_nbr': window.sessionStorage.getItem('vehicle_nbr')
+                   'vehicle_nbr': window.sessionStorage.getItem('vehicle_nbr'),
+                   'trip_id': window.sessionStorage.getItem('trip_id')
                   };
         //console.log(JSON.stringify(data));
         $.ajax({
@@ -23,10 +24,15 @@ $(function() {
             dataType: "json", 
             success: function(res){
                 console.log(JSON.stringify(res));
-                $('#location').val('');
-                $('#boarded').val('');
-                $('#departed').val('');
-                $('input[name=bus_full]').prop('checked',false);
+                if (res._id !== 0) {
+                    $('#location').val('');
+                    $('#boarded').val('');
+                    $('#departed').val('');
+                    $('input[name=bus_full]').prop('checked',false);
+                } else {
+                    alert('You must log in to submit headcount');
+                    $.afui.loadContent("#page1",false,false,"pop");
+                }
             }
         })
         .fail(function(data){

@@ -23,6 +23,7 @@ $(function() {
             success: function(res){
                 console.log(JSON.stringify(res));
                 sessionStorage.setItem("vehicle_nbr", res.vehicle_nbr);
+                sessionStorage.setItem("trip_id", res._id);
                 $.afui.loadContent("#main",false,false,"pop");
             }
         })
