@@ -2766,11 +2766,11 @@ input[type="checkbox"] {
 input[type="radio"] + label,
 input[type="checkbox"] + label {
   display: inline-block;
-  width: 60%;
+  width: 95%;
   float: right;
   position: relative;
   text-align: left;
-  padding: 13px 0 0 8px;
+  padding: 13px 0 0px 8px;
   margin-top: 3px;
 }
 input[type="radio"]:not(.toggle) + label:before {
@@ -2883,7 +2883,7 @@ textarea {
 }
 .input-group input[type=button],
 .input-group input[type=submit] {
-  margin: 5px;
+  margin: 15px;
 }
 input.toggle + label:before,
 input.toggle:checked + label:before {

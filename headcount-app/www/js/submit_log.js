@@ -10,7 +10,8 @@ $(function() {
         // submit form
         var data = {'driver_name': $('#driver_name').val(),
                    'vehicle_nbr': $('#vehicle_nbr').val(),
-                   'starting_mileage': $('#starting_mileage').val()
+                   'starting_mileage': $('#starting_mileage').val(),
+                   'route': $('input[name="route"]:checked').val()
                   };
         console.log(JSON.stringify(data));
         $.ajax({
@@ -21,6 +22,7 @@ $(function() {
             dataType: "json", 
             success: function(res){
                 console.log(JSON.stringify(res));
+                sessionStorage.setItem("vehicle_nbr", res.vehicle_nbr);
                 $.afui.loadContent("#main",false,false,"pop");
             }
         })

@@ -1,9 +1,10 @@
 var mongoose = require('mongoose');
 
 var LogSchema = new mongoose.Schema({
+    route: String,
     driver_name: String,
-    date: {type: date, default: Date.now() }
-    vehicle_number: Number,
+    date: {type: Date, default: Date.now },
+    vehicle_nbr: Number,
     starting_mileage: Number
 })
 

@@ -11,7 +11,8 @@ $(function() {
         var data = {'location': $('#location').val(),
                    'boarded': $('#boarded').val(),
                    'departed': $('#departed').val(),
-                   'full': $('input[type="radio"]:checked').val()
+                   'full': $('input[name="bus_full"]:checked').val(),
+                   'vehicle_nbr': window.sessionStorage.getItem('vehicle_nbr')
                   };
         //console.log(JSON.stringify(data));
         $.ajax({
