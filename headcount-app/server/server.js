@@ -22,6 +22,11 @@ app.post('/postHeadCount', function(req, res){
     return res.send(req.body);
 });
 
+app.post('/postLog', function(req, res) {
+    console.log('body: ' + JSON.stringify(req.body));
+    return res.send(req.body);
+});
+
 app.listen(3000, function() {
     console.log("Express server listening on port 3000");
 })

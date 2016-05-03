@@ -1,6 +1,6 @@
 $(function() {
     
-    var form = $('#form');
+    var form = $('#start_log');
     var formMessages = $('#formMessages');
     
     // event listener for headcount form
@@ -8,12 +8,11 @@ $(function() {
         // stop default form submission
         event.preventDefault();
         // submit form
-        var data = {'location': $('#location').val(),
-                   'boarded': $('#boarded').val(),
-                   'departed': $('#departed').val(),
-                   'full': $('input[type="radio"]:checked').val()
+        var data = {'driver_name': $('#driver_name').val(),
+                   'vehicle_nbr': $('#vehicle_nbr').val(),
+                   'starting_mileage': $('#starting_mileage').val()
                   };
-        //console.log(JSON.stringify(data));
+        console.log(JSON.stringify(data));
         $.ajax({
             type: 'POST',
             url: $(form).attr('action'),
@@ -22,10 +21,7 @@ $(function() {
             dataType: "json", 
             success: function(res){
                 console.log(JSON.stringify(res));
-                $('#location').val('');
-                $('#boarded').val('');
-                $('#departed').val('');
-                $('input[name=bus_full]').prop('checked',false);
+                $.afui.loadContent("#main",false,false,"pop");
             }
         })
         .fail(function(data){

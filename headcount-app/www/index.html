@@ -19,6 +19,7 @@
     <script type="text/javascript" charset="utf-8" src="lib/fastclick.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="lib/appframework/appframework.ui.min.js"></script>
     <script type="text/javascript" src="js/submit_count.js"></script>
+    <script type="text/javascript" src="js/submit_log.js"></script>
         
     <script src='cordova.js'></script>
 
@@ -42,20 +43,31 @@
             <h1>Title</h1>
         </header>
        
-        <div class="pages">
-            <div class="panel" id="main" data-title="Main" data-selected="true">
+            <div class="pages">
+            <div class="panel" id="page1" data-title="Driver Log" data-selected="true">
+                <form name='start_log' id='start_log' action="http://localhost:3000/postLog/">
+                    <p>Name</p>
+                    <input id='driver_name' type='text'/>
+                    <p>Vehicle #</p>
+                    <input id='vehicle_nbr' type='number' pattern='[0-9]*'/>
+                    <p>Starting mileage</p>
+                    <input id='starting_mileage' type='text'/>
+                    <button type="submit" name='Submit' id='submit_log'>Submit</button>
+                </form>
+            </div>
+           
+            <div class="panel" id="main" data-title="Main" >
                 <div id='formMessages'></div>
                 <form name='form' id='form' action="http://localhost:3000/postHeadCount/">
                     <br>
-                    <label>Starting Location</label>
-                   <!-- make dropdown -->
+                    <p>Starting Location</p>
+                   <!-- make dropdown -->   
                     <input id='location' name='location' type='text'/>
-                    <label>Boarded</label>
+                    <p>Boarded</p>
                     <input id='boarded' name='boarded' type='number' pattern='[0-9]*'/>
-                    <label>Departed</label>
+                    <p>Departed</p>
                     <input id='departed' name='departed' type='number' pattern='[0-9]*'/>
-                    <p>
-                    <label>Full Bus?</label>
+                    <p>Full Bus?</p>
                     <input type="radio" 
                            name="bus_full"
                            id="yes"
@@ -66,19 +78,11 @@
                            id="no"
                            value="no" />
                     <label for = "no">No</label>
-                    </p>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                     <button type="submit" name='submitButton' id='Enter'>Submit</button> 
-                </form>
-            </div>
-            <div class="panel" id="page2" data-title="Driver Log">
-                <form name='start_log' id='start_log'>
-                    <p>Name</p>
-                    <input id='driver_name' type='text'/>
-                    <p>Vehicle #</p>
-                    <input id='vehicle_nbr' type='number' pattern='[0-9]*'/>
-                    <p>Starting mileage</p>
-                    <input id='starting-mileage' type='text'/>
-                    <button type="submit" name='Submit' id='submit_log'>Submit</button>
                 </form>
             </div>
         </div>
