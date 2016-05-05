@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!--HTML5 doctype-->
 <html>
 
 <head>
@@ -17,11 +16,11 @@
     <script type="text/javascript" src="intelxdk.js"></script>
     <script type="text/javascript" charset="utf-8" src="lib/jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="lib/fastclick.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/cordova.oauth2.js"></script>
     <script type="text/javascript" charset="utf-8" src="lib/appframework/appframework.ui.min.js"></script>
     <script type="text/javascript" src="js/submit_count.js"></script>
     <script type="text/javascript" src="js/submit_log.js"></script>
     <script type="text/javascript" src="js/submit_end_of_day.js"></script>
-        
     <script src='cordova.js'></script>
 
 
@@ -89,12 +88,12 @@
                     <input type="radio" 
                            name="bus_full"
                            id="yes"
-                           value="yes" />
+                           value="yes" /> 
                     <label for = "yes">Yes</label>
                     <input type="radio"
                            name="bus_full"
                            id="no"
-                           value="no" />
+                           value="no" /> 
                     <label for = "no">No</label>
                     <br>
                     <br>
@@ -104,6 +103,10 @@
                     <br>
                     <button type="submit" name='submitButton' id='Enter'>Submit</button> 
                 </form>
+                <!-- auth-->
+                <h1>Oauth2</h1>
+                <div class="button" id="google_login">Oauth2 Login</div>
+                <div id="logs"></div> 
             </div>
             <div class="panel" id="page2" data-title="End of Day" >
                 <form name='end_of_day' id='end_of_day' action="http://localhost:3000/postEndOfDay/">

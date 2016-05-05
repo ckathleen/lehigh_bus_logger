@@ -17,13 +17,16 @@ mongoose.connect(dburl, function(err) {
 });
 
 var app = express();
-
-app.use(bodyParser.json());
+app.use(bodyParser.json());       //support JSON-encoded bodies POST: {"name":"foo","color":"red"}  
+app.use(bodyParser.urlencoded({     //support URL-encoded bodies POST: name=foo&color=red
+  extended: true
+})); 
 app.use(expressValidator());
 app.use('/node_modules', express.static(__dirname + '/node_modules'));
 app.use(errorhandler());
 
 app.post('/postHeadCount', function(req, res){
+	 console.log("/postHeadCount");
     console.log('body: ' + JSON.stringify(req.body));
     req.checkBody('boarded', 'Boarded is not int').isInt()
 	req.checkBody('departed', 'Departed is not int').isInt()
@@ -85,6 +88,12 @@ app.post('/postEndOfDay', function(req, res) {
 			res.send({'_id': 0});
 		}
 	});
+});
+
+//javascript pure
+app.post('/headCountForm', function(req, res){
+	console.log("/headCountForm");
+    console.log(req.body);
 });
 
 app.listen(3000, function() {
