@@ -3,3 +3,8 @@ www/node_modules
 www/js
 www/js/npm-debug.log
 npm-debug.log
+headcount-app.xdk
+xdk-publish-meta-data.json
+plugins/
+headcount-app.xdke
+server/config.js
