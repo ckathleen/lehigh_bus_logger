@@ -8,11 +8,10 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <META HTTP-EQUIV="Pragma" CONTENT="no-cache"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
     <link rel="stylesheet" type="text/css" href="lib/appframework/icons.css" />
     <link rel="stylesheet" type="text/css" href="lib/appframework/af.ui.css" />
-        <link rel="stylesheet" type="text/css" href="style.css" />
-
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css" />
     <script type="text/javascript" src='xhr.js'></script>
     <script type="text/javascript" src="intelxdk.js"></script>
     <script type="text/javascript" charset="utf-8" src="lib/jquery.min.js"></script>
@@ -24,33 +23,20 @@
     <script type="text/javascript" src="js/submit_end_of_day.js"></script>
     <script type="text/javascript" src="js/auth.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.js"></script>
     <script src='cordova.js'></script>
 </head>
-<body>
-   
-    
-    <!--div id="splashscreen" class='ui-loader heavy'>
-        App Framework
-        <br>
-        <br>
-        <span class='ui-icon ui-icon-loading spin'></span>
-        <h1>Starting app</h1>
-    </div>
---> 
-<div id="login_screen">
-</div>
+<body id='body'>
+    <div id="login_screen"></div>
     <div id="main-screen" class="view splitview" style="visibility:hidden">
         <header>
             <a class="menuButton" data-left-menu="left" data-transition="cover" style="float:left"></a>
-            <h1>Title</h1>
         </header>
-       
-            <div class="pages">
+        <div class="pages">
             <div class="panel" id="page1" data-title="Driver Log" data-selected="true">
-             <button id="authorize-button" style="visibility: hidden">Authorize</button>
-             <div class="g-signin2" data-onsuccess="onSignIn"></div>
-
-                <form name='start_log' id='start_log' action="http://localhost:3000/postLog/">
+              <!--  <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
+                <form name='start_log' id='start_log' action="http://localhost:3000/postLog/" class="ui form">
+                    <br>
                     <p>Name</p>
                     <input id='driver_name' type='text'/>
                     <p>Vehicle #</p>
@@ -59,63 +45,62 @@
                     <input id='starting_mileage' type='number' step="0.001"/>
                     <p>Route</p>
                     <p><input type="radio"
-                           name="route"
-                           id="Packer Express"
-                           value="Packer Express"/>
-                    <label for="Packer Express">Packer Express</label>
-                    <input type="radio"
-                           name="route"
-                           id="Campus Connector"
-                           value="Campus Connector"/>
-                    <label for="Campus Connector">Campus Connector</label>
-                    </p>
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <p><button type="submit" name='Submit' id='submit_log'>Submit</button></p>
+                       name="route"
+                       id="Packer Express"
+                       value="Packer Express"/>
+                       <label for="Packer Express">Packer Express</label>
+                       <input type="radio"
+                       name="route"
+                       id="Campus Connector"
+                       value="Campus Connector"/>
+                       <label for="Campus Connector">Campus Connector</label>
+                   </p>
+                   <br><br><br><br>
+                   <div id='buttonDiv'>
+                    <button type="submit" class="ui button" name='Submit' id='submit_log'>Submit</button>
+                   </div>
                 </form>
             </div>
-           
-            <div class="panel" id="main" data-title="Head Count" >
+
+            <div class="panel" id="main" data-title="Head Count">
                 <div id='formMessages'></div>
-                <form name='form' id='form' action="http://localhost:3000/postHeadCount/">
+                <form name='form' id='form' action="http://localhost:3000/postHeadCount/" class="ui form">
                     <br>
                     <p>Starting Location</p>
-                   <!-- make dropdown -->   
-                    <input id='location' name='location'/>
+                    <input id="location" name='location' list="busStops">
+                    <datalist id="busStops">
+                    </datalist>
                     <p>Boarded</p>
                     <input id='boarded' name='boarded'/>
                     <p>Departed</p>
                     <input id='departed' name='departed'/>
                     <p>Full Bus?</p>
                     <input type="radio" 
-                           name="bus_full"
-                           id="yes"
-                           value="yes" /> 
+                    name="bus_full"
+                    id="yes"
+                    value="yes" /> 
                     <label for = "yes">Yes</label>
                     <input type="radio"
-                           name="bus_full"
-                           id="no"
-                           value="no" /> 
+                    name="bus_full"
+                    id="no"
+                    value="no" /> 
                     <label for = "no">No</label>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <button type="submit" name='submitButton' id='Enter'>Submit</button> 
+                    <br><br><br><br>
+                    <div id='buttonDiv'>
+                        <button type="submit"  class="ui button" name='submitButton' id='Enter'>Record</button>
+                    </div> 
                 </form>
             </div>
             <div class="panel" id="page2" data-title="End of Day" >
-                <form name='end_of_day' id='end_of_day' action="http://localhost:3000/postEndOfDay/">
+                <form name='end_of_day' id='end_of_day' action="http://localhost:3000/postEndOfDay/"  class="ui form">
                     <br>
                     <p>Ending Mileage</p>
-                   <!-- make dropdown -->   
+                    <!-- make dropdown -->   
                     <input id='ending_mileage' name='ending_mileage'/>
-                    <button type="submit" name='submit_end' id='submit_end'>Submit</button> 
+                    <br><br><br><br>
+                    <div id='buttonDiv'>
+                        <button type="submit"  class="ui button" name='submit_end' id='submit_end'>Submit</button> 
+                    </div>
                 </form>
             </div>
         </div>
@@ -136,6 +121,5 @@
             </div>
         </nav>
     </div>
-    
 </body>
 </html>

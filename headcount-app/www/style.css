@@ -1,7 +1,22 @@
+#body{
+	font-size:18px;
+}
+p{
+	font-size:18px;
+}
 #login_screen{
 	background: url('./images/lehigh.png') no-repeat center;
     background-size: contain;
     width: 100vw;
     height: 100vh;
 	
+}
+div #buttonDiv{
+	margin-top:60px;
+	text-align:center;
+}
+button{
+	background-color: brown; 
+ 	height:80%;
+ 	width:50%;
 }

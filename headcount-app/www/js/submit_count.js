@@ -1,4 +1,16 @@
 $(function() {
+    var validateJSON = require('./json_validator.js').validate;
+    var busStops = require('./busStops');
+    intel.xdk.device.hideSplashScreen(); 
+
+    busStops.map(function(building){
+        $('#busStops').append(
+            $('<option>', {
+                text: building,
+                value: building
+            })
+        )
+    });  
 
     $("#login_screen").on('click', function() {
         $('#login_screen').css('visibility','hidden');
@@ -18,9 +30,6 @@ $(function() {
         var loginWindow = window.open(login_url, '_blank', 'location=yes');
     });
 
-
-    //using jqueryvalid
-    var validateJSON = require('./json_validator.js').validate;
     var formResponse = $('#formResponse');
     $('form').on('submit', function(e) {
         e.preventDefault();  
