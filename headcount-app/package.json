@@ -1,0 +1,19 @@
+{
+  "name": "headcount-app",
+  "version": "1.0.0",
+  "description": "Side Menu App ================== This template can be used for simple app with side menu that can be opened to switch views, this template can be used for creating applications similar to Youtube* app or Gmail* app.",
+  "main": "index.js",
+  "dependencies": {
+    "browserify": "^13.0.0",
+    "jsonschema": "^1.1.0",
+    "watchify": "^3.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "browserify www/js/submit_count.js -o www/js/submit_count_bundle.js -v",
+    "watch": "watchify www/js/submit_count.js -o www/js/submit_count_bundle.js -v",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

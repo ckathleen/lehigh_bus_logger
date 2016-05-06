@@ -5,7 +5,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "src": "jsapp/template-side-menu-js/sample.zip",
       "projectGuid": "f9eea096-b471-496d-a070-b1b1f9e7a7a5",
-      "lastModifiedDate": 1462493242198,
+      "lastModifiedDate": 1462510949422,
       "creationDate": 1461898813213
     },
     "sourceDirectory": "www",
@@ -61,7 +61,8 @@
           "android-minSdkVersion": "14",
           "android-targetSdkVersion": "21",
           "android-installLocation": "auto",
-          "android-signed": true
+          "android-signed": true,
+          "Fullscreen": true
         },
         "isActive_": true,
         "appName_": "headcount-app",
@@ -83,7 +84,22 @@
           "navigation": []
         },
         "icons_": [],
-        "splashes_": [],
+        "splashes_": [
+          {
+            "relPath": "images/lehigh_water.png",
+            "density": "ldpi",
+            "height": 320,
+            "width": 426,
+            "orientation": "landscape"
+          },
+          {
+            "relPath": "images/lehigh.png",
+            "density": "hdpi",
+            "height": 480,
+            "width": 640,
+            "orientation": "landscape"
+          }
+        ],
         "addlPermissions_": "",
         "excludedLibraries_": "",
         "certificateId_": "",

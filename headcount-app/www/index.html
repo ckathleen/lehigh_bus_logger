@@ -11,21 +11,21 @@
 
     <link rel="stylesheet" type="text/css" href="lib/appframework/icons.css" />
     <link rel="stylesheet" type="text/css" href="lib/appframework/af.ui.css" />
-    
+        <link rel="stylesheet" type="text/css" href="style.css" />
+
     <script type="text/javascript" src='xhr.js'></script>
     <script type="text/javascript" src="intelxdk.js"></script>
     <script type="text/javascript" charset="utf-8" src="lib/jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="lib/fastclick.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="lib/cordovaOauth2.js"></script>
     <script type="text/javascript" charset="utf-8" src="lib/appframework/appframework.ui.min.js"></script>
-    <script type="text/javascript" src="js/submit_count.js"></script>
+    <script type="text/javascript" src="js/submit_count_bundle.js"></script>
     <script type="text/javascript" src="js/submit_log.js"></script>
     <script type="text/javascript" src="js/submit_end_of_day.js"></script>
+    <script type="text/javascript" src="js/auth.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js'></script>
     <script src='cordova.js'></script>
-
-
 </head>
-
 <body>
    
     
@@ -37,7 +37,9 @@
         <h1>Starting app</h1>
     </div>
 --> 
-    <div class="view splitview">
+<div id="login_screen">
+</div>
+    <div id="main-screen" class="view splitview" style="visibility:hidden">
         <header>
             <a class="menuButton" data-left-menu="left" data-transition="cover" style="float:left"></a>
             <h1>Title</h1>
@@ -45,6 +47,9 @@
        
             <div class="pages">
             <div class="panel" id="page1" data-title="Driver Log" data-selected="true">
+             <button id="authorize-button" style="visibility: hidden">Authorize</button>
+             <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
                 <form name='start_log' id='start_log' action="http://localhost:3000/postLog/">
                     <p>Name</p>
                     <input id='driver_name' type='text'/>
@@ -79,11 +84,11 @@
                     <br>
                     <p>Starting Location</p>
                    <!-- make dropdown -->   
-                    <input id='location' name='location' type='text'/>
+                    <input id='location' name='location'/>
                     <p>Boarded</p>
-                    <input id='boarded' name='boarded' type='number' pattern='[0-9]*'/>
+                    <input id='boarded' name='boarded'/>
                     <p>Departed</p>
-                    <input id='departed' name='departed' type='number' pattern='[0-9]*'/>
+                    <input id='departed' name='departed'/>
                     <p>Full Bus?</p>
                     <input type="radio" 
                            name="bus_full"
@@ -103,17 +108,13 @@
                     <br>
                     <button type="submit" name='submitButton' id='Enter'>Submit</button> 
                 </form>
-                <!-- auth-->
-                <h1>Oauth2</h1>
-                <div class="button" id="google_login">Oauth2 Login</div>
-                <div id="logs"></div> 
             </div>
             <div class="panel" id="page2" data-title="End of Day" >
                 <form name='end_of_day' id='end_of_day' action="http://localhost:3000/postEndOfDay/">
                     <br>
                     <p>Ending Mileage</p>
                    <!-- make dropdown -->   
-                    <input id='ending_mileage' name='ending_mileage' type='number' step='0.001'/>
+                    <input id='ending_mileage' name='ending_mileage'/>
                     <button type="submit" name='submit_end' id='submit_end'>Submit</button> 
                 </form>
             </div>

@@ -28,8 +28,8 @@ app.use(errorhandler());
 app.post('/postHeadCount', function(req, res){
 	 console.log("/postHeadCount");
     console.log('body: ' + JSON.stringify(req.body));
-    req.checkBody('boarded', 'Boarded is not int').isInt()
-	req.checkBody('departed', 'Departed is not int').isInt()
+ //    req.checkBody('boarded', 'Boarded is not int').isInt()
+	// req.checkBody('departed', 'Departed is not int').isInt()
 	DriverLog.findById(req.body.trip_id, function(err, log) {
 		if (err) console.log(err);
 		if (log) {
@@ -88,6 +88,12 @@ app.post('/postEndOfDay', function(req, res) {
 			res.send({'_id': 0});
 		}
 	});
+});
+
+//javascript pure
+app.get('/oauth2callback', function(req, res){
+    console.log("/in auth callback");
+    res.send('redirect');
 });
 
 //javascript pure

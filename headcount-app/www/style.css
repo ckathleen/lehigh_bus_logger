@@ -1,0 +1,7 @@
+#login_screen{
+	background: url('./images/lehigh.png') no-repeat center;
+    background-size: contain;
+    width: 100vw;
+    height: 100vh;
+	
+}
